@@ -1,6 +1,6 @@
 param(
-    [string]$PackageTemplatePath = 'C:\Users\User\source\repos\DW_RH\DW_RH\Dimensions.dtsx',
-    [string]$TaskTemplatePath = 'C:\Users\User\source\repos\Projet_orders\Projet_orders\Fait.dtsx',
+    [string]$PackageTemplatePath = (Join-Path $PSScriptRoot 'Dimensions.dtsx'),
+    [string]$TaskTemplatePath = (Join-Path $PSScriptRoot 'Facts.dtsx'),
     [string]$OutputPath = (Join-Path $PSScriptRoot 'Facts.dtsx')
 )
 
@@ -17,7 +17,7 @@ $MergeLeftInputName = 'Entr' + [char]0x00E9 + 'e gauche de jointure de fusion'
 $MergeRightInputName = 'Entr' + [char]0x00E9 + 'e droite de jointure de fusion'
 $MergeOutputName = 'Sortie de jointure de fusion'
 $DestinationInputName = 'Entr' + [char]0x00E9 + 'e de destination OLE DB'
-$OleDbManagerRef = 'Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]'
+$OleDbManagerRef = 'Package.ConnectionManagers[DW_RH]'
 $FlatFileManagerRef = 'Package.ConnectionManagers[HRDataset_Clean]'
 
 function New-GuidText {

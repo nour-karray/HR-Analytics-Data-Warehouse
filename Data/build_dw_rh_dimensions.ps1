@@ -1,5 +1,5 @@
 param(
-    [string]$TemplatePath = 'C:\Users\User\source\repos\DW_RH\DW_RH\DimensionS.dtsx',
+    [string]$TemplatePath = (Join-Path $PSScriptRoot 'Dimensions.dtsx'),
     [string]$OutputPath = (Join-Path $PSScriptRoot 'Dimensions.dtsx')
 )
 

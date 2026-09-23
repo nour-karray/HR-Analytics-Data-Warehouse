@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts" DTS:refId="Package" DTS:CreationDate="4/25/2026 12:39:12 PM" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="DESKTOP-V8RVG5N" DTS:CreatorName="DESKTOP-V8RVG5N\User" DTS:DTSID="{A3846011-EF33-4DE9-978B-5B98E4E4CC44}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="17.0.1010.2" DTS:LocaleID="1036" DTS:ObjectName="Dimensions" DTS:PackageType="5" DTS:VersionBuild="12" DTS:VersionGUID="{0C4BF9B8-8849-4096-8435-D37F182E27ED}">
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts" DTS:refId="Package" DTS:CreationDate="4/25/2026 12:39:12 PM" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="Portfolio" DTS:CreatorName="Portfolio" DTS:DTSID="{A3846011-EF33-4DE9-978B-5B98E4E4CC44}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="17.0.1010.2" DTS:LocaleID="1036" DTS:ObjectName="Dimensions" DTS:PackageType="5" DTS:VersionBuild="12" DTS:VersionGUID="{0C4BF9B8-8849-4096-8435-D37F182E27ED}">
   <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager DTS:refId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" DTS:CreationName="OLEDB" DTS:DTSID="{BCB0567D-782B-48F8-8267-5BA9AABB6089}" DTS:ObjectName="DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH">
+    <DTS:ConnectionManager DTS:refId="Package.ConnectionManagers[DW_RH]" DTS:CreationName="OLEDB" DTS:DTSID="{BCB0567D-782B-48F8-8267-5BA9AABB6089}" DTS:ObjectName="DW_RH">
       <DTS:ObjectData>
-        <DTS:ConnectionManager DTS:ConnectRetryCount="1" DTS:ConnectRetryInterval="5" DTS:ConnectionString="Data Source=DESKTOP-V8RVG5N\MSSQLSERVER05;Initial Catalog=DW_RH;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BCB0567D-782B-48F8-8267-5BA9AABB6089}DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH;Auto Translate=False;" />
+        <DTS:ConnectionManager DTS:ConnectRetryCount="1" DTS:ConnectRetryInterval="5" DTS:ConnectionString="Data Source=localhost;Initial Catalog=DW_RH;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BCB0567D-782B-48F8-8267-5BA9AABB6089}DW_RH;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager DTS:refId="Package.ConnectionManagers[HRDataset_Clean]" DTS:CreationName="FLATFILE" DTS:DTSID="{8E2052C5-4612-4C01-8EB3-88261ACE3556}" DTS:ObjectName="HRDataset_Clean">
       <DTS:ObjectData>
-        <DTS:ConnectionManager DTS:Format="Delimited" DTS:LocaleID="1036" DTS:HeaderRowDelimiter="_x000D__x000A_" DTS:ColumnNamesInFirstDataRow="True" DTS:RowDelimiter="" DTS:TextQualifier="_x0022_" DTS:CodePage="1252" DTS:ConnectionString="C:\Users\User\Desktop\BI\Data\HRDataset_Clean_Validated.csv">
+        <DTS:ConnectionManager DTS:Format="Delimited" DTS:LocaleID="1036" DTS:HeaderRowDelimiter="_x000D__x000A_" DTS:ColumnNamesInFirstDataRow="True" DTS:RowDelimiter="" DTS:TextQualifier="_x0022_" DTS:CodePage="1252" DTS:ConnectionString="HRDataset_Clean_Validated.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn DTS:ColumnType="Delimited" DTS:ColumnDelimiter="_x002C_" DTS:MaximumWidth="50" DTS:DataType="129" DTS:TextQualified="True" DTS:ObjectName="Employee_Name" DTS:DTSID="{07BA10D3-A7DE-4BB9-9EB2-81ECE6CB574F}" DTS:CreationName="" />
             <DTS:FlatFileColumn DTS:ColumnType="Delimited" DTS:ColumnDelimiter="_x002C_" DTS:MaximumWidth="50" DTS:DataType="129" DTS:TextQualified="True" DTS:ObjectName="EmpID" DTS:DTSID="{FB0F0F7A-889C-43BD-BD97-68F1C45EFD94}" DTS:CreationName="" />
@@ -150,7 +150,7 @@
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimEmployee\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimEmployee\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimEmployee\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -185,7 +185,7 @@ where [refTable].[EmpID] = ? and [refTable].[Employee_Name] = ? and [refTable].[
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimEmployee\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimEmployee\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimEmployee\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -434,7 +434,7 @@ where [refTable].[EmpID] = ? and [refTable].[Employee_Name] = ? and [refTable].[
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimDepartment\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimDepartment\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimDepartment\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -469,7 +469,7 @@ where [refTable].[DeptID] = ?</property>
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimDepartment\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimDepartment\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimDepartment\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -668,7 +668,7 @@ where [refTable].[DeptID] = ?</property>
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimPosition\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimPosition\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimPosition\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -703,7 +703,7 @@ where [refTable].[PositionID] = ?</property>
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimPosition\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimPosition\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimPosition\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -902,7 +902,7 @@ where [refTable].[PositionID] = ?</property>
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimManager\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimManager\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimManager\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -937,7 +937,7 @@ where [refTable].[ManagerID] = ?</property>
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimManager\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimManager\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimManager\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -1136,7 +1136,7 @@ where [refTable].[ManagerID] = ?</property>
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimLocation\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimLocation\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimLocation\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -1171,7 +1171,7 @@ where [refTable].[State] = ? and [refTable].[Zip] = ?</property>
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimLocation\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimLocation\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimLocation\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -1375,7 +1375,7 @@ where [refTable].[State] = ? and [refTable].[Zip] = ?</property>
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimRecruitment\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimRecruitment\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimRecruitment\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -1410,7 +1410,7 @@ where [refTable].[RecruitmentSource] = ? and [refTable].[FromDiversityJobFairID]
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimRecruitment\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimRecruitment\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimRecruitment\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -1614,7 +1614,7 @@ where [refTable].[RecruitmentSource] = ? and [refTable].[FromDiversityJobFairID]
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimPerformance\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimPerformance\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimPerformance\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">
@@ -1649,7 +1649,7 @@ where [refTable].[PerfScoreID] = ? and [refTable].[PerformanceScore] = ?</proper
                 <property dataType="System.Boolean" description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé." name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
-                <connection refId="Package\DimPerformance\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
+                <connection refId="Package\DimPerformance\Recherche.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimPerformance\Recherche.Inputs[Entrée de recherche]" name="Entrée de recherche">
@@ -2132,7 +2132,7 @@ where [refTable].[PerfScoreID] = ? and [refTable].[PerformanceScore] = ?</proper
                 <property dataType="System.Int32" description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé." name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
-                <connection refId="Package\DimDate\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DESKTOP-V8RVG5N\MSSQLSERVER05.DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
+                <connection refId="Package\DimDate\Destination OLE DB.Connections[OleDbConnection]" connectionManagerID="Package.ConnectionManagers[DW_RH]" connectionManagerRefId="Package.ConnectionManagers[DW_RH]" description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données." name="OleDbConnection" />
               </connections>
               <inputs>
                 <input refId="Package\DimDate\Destination OLE DB.Inputs[Entrée de destination OLE DB]" errorOrTruncationOperation="Insérer" errorRowDisposition="FailComponent" hasSideEffects="true" name="Entrée de destination OLE DB">

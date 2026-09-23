@@ -1,6 +1,6 @@
 param(
     [string]$PackagePath = (Join-Path $PSScriptRoot 'Dimensions.dtsx'),
-    [string]$SortTemplatePath = 'C:\Users\User\source\repos\DW_RH\DW_RH\DimensionS.dtsx'
+    [string]$SortTemplatePath = (Join-Path $PSScriptRoot 'Dimensions.dtsx')
 )
 
 $ErrorActionPreference = 'Stop'
