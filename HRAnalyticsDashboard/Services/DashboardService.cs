@@ -189,11 +189,9 @@ SELECT r.RecruitmentSource,
        ISNULL(AVG(CAST(f.EngagementSurvey AS DECIMAL(18,2))), 0) AS AvgEngagement,
        ISNULL(AVG(CAST(f.EmpSatisfaction AS DECIMAL(18,2))), 0) AS AvgSatisfaction
 FROM dbo.FactAttendancePerformance f
-JOIN (
-    SELECT FromDiversityJobFairID, MIN(RecruitmentSource) AS RecruitmentSource
-    FROM dbo.DimRecruitment
-    GROUP BY FromDiversityJobFairID
-) r ON f.FromDiversityJobFairID = r.FromDiversityJobFairID
+JOIN dbo.DimRecruitment r
+    ON f.FromDiversityJobFairID = r.FromDiversityJobFairID
+    AND f.RecruitmentSource = r.RecruitmentSource
 GROUP BY r.RecruitmentSource
 ORDER BY EmployeeCount DESC, r.RecruitmentSource;";
 
@@ -213,11 +211,9 @@ SELECT p.PerformanceScore,
        ISNULL(SUM(f.SpecialProjectsCount), 0) AS TotalProjects,
        ISNULL(AVG(CAST(f.EmpSatisfaction AS DECIMAL(18,2))), 0) AS AverageSatisfaction
 FROM dbo.FactAttendancePerformance f
-JOIN (
-    SELECT PerfScoreID, MIN(PerformanceScore) AS PerformanceScore
-    FROM dbo.DimPerformance
-    GROUP BY PerfScoreID
-) p ON f.PerfScoreID = p.PerfScoreID
+JOIN dbo.DimPerformance p
+    ON f.PerfScoreID = p.PerfScoreID
+    AND f.PerformanceScore = p.PerformanceScore
 GROUP BY p.PerformanceScore
 ORDER BY TotalProjects DESC, p.PerformanceScore;";
 
@@ -293,16 +289,12 @@ LEFT JOIN (
     FROM dbo.DimManager
     GROUP BY ManagerID
 ) m ON ec.ManagerID = m.ManagerID
-LEFT JOIN (
-    SELECT FromDiversityJobFairID, MIN(RecruitmentSource) AS RecruitmentSource
-    FROM dbo.DimRecruitment
-    GROUP BY FromDiversityJobFairID
-) r ON ap.FromDiversityJobFairID = r.FromDiversityJobFairID
-LEFT JOIN (
-    SELECT PerfScoreID, MIN(PerformanceScore) AS PerformanceScore
-    FROM dbo.DimPerformance
-    GROUP BY PerfScoreID
-) ps ON ap.PerfScoreID = ps.PerfScoreID
+LEFT JOIN dbo.DimRecruitment r
+    ON ap.FromDiversityJobFairID = r.FromDiversityJobFairID
+    AND ap.RecruitmentSource = r.RecruitmentSource
+LEFT JOIN dbo.DimPerformance ps
+    ON ap.PerfScoreID = ps.PerfScoreID
+    AND ap.PerformanceScore = ps.PerformanceScore
 LEFT JOIN (
     SELECT State, Zip
     FROM dbo.DimLocation

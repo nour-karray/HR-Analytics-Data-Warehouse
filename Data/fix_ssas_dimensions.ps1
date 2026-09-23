@@ -1,5 +1,6 @@
 param(
-    [string]$ProjectPath = 'C:\Users\User\source\repos\Cube_RH\Cube_RH'
+    [Parameter(Mandatory = $true)]
+    [string]$ProjectPath
 )
 
 $ErrorActionPreference = 'Stop'

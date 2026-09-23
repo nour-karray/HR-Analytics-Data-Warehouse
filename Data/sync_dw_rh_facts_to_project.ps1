@@ -1,7 +1,9 @@
 param(
-    [string]$FactsPackagePath = 'C:\Users\User\Desktop\BI\Data\Facts.dtsx',
-    [string]$ProjectPath = 'C:\Users\User\source\repos\DW_RH\DW_RH\DW_RH.dtproj',
-    [string]$ProjectPackagePath = 'C:\Users\User\source\repos\DW_RH\DW_RH\Facts.dtsx'
+    [string]$FactsPackagePath = (Join-Path $PSScriptRoot 'Facts.dtsx'),
+    [Parameter(Mandatory = $true)]
+    [string]$ProjectPath,
+    [Parameter(Mandatory = $true)]
+    [string]$ProjectPackagePath
 )
 
 $ErrorActionPreference = 'Stop'

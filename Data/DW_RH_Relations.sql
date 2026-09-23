@@ -149,103 +149,109 @@ IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = N'UQ_DimLocation_S
     ALTER TABLE dbo.DimLocation ADD CONSTRAINT UQ_DimLocation_State_Zip UNIQUE (State, Zip);
 GO
 
-/* 6. Creer uniquement les relations possibles avec la structure actuelle des faits */
+/* 6. Creer et valider les relations avec la structure actuelle des faits.
+   WITH CHECK refuse les donnees incoherentes et laisse les contraintes trusted. */
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimEmployee', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimEmployee
         FOREIGN KEY (EmpID) REFERENCES dbo.DimEmployee(EmpID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimDepartment', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimDepartment
         FOREIGN KEY (DeptID) REFERENCES dbo.DimDepartment(DeptID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimPosition', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimPosition
         FOREIGN KEY (PositionID) REFERENCES dbo.DimPosition(PositionID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimManager', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimManager
         FOREIGN KEY (ManagerID) REFERENCES dbo.DimManager(ManagerID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimLocation', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimLocation
         FOREIGN KEY (State, Zip) REFERENCES dbo.DimLocation(State, Zip);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimDate_Hire', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimDate_Hire
         FOREIGN KEY (DateofHire) REFERENCES dbo.DimDate(FullDate);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimDate_Review', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimDate_Review
         FOREIGN KEY (LastPerformanceReview_Date) REFERENCES dbo.DimDate(FullDate);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimRecruitment', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimRecruitment
         FOREIGN KEY (RecruitmentSource, FromDiversityJobFairID)
         REFERENCES dbo.DimRecruitment(RecruitmentSource, FromDiversityJobFairID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactAttendancePerformance_DimPerformance', N'F') IS NULL
-    ALTER TABLE dbo.FactAttendancePerformance WITH NOCHECK
+    ALTER TABLE dbo.FactAttendancePerformance WITH CHECK
     ADD CONSTRAINT FK_FactAttendancePerformance_DimPerformance
         FOREIGN KEY (PerfScoreID, PerformanceScore)
         REFERENCES dbo.DimPerformance(PerfScoreID, PerformanceScore);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimEmployee', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimEmployee
         FOREIGN KEY (EmpID) REFERENCES dbo.DimEmployee(EmpID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimDepartment', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimDepartment
         FOREIGN KEY (DeptID) REFERENCES dbo.DimDepartment(DeptID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimPosition', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimPosition
         FOREIGN KEY (PositionID) REFERENCES dbo.DimPosition(PositionID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimManager', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimManager
         FOREIGN KEY (ManagerID) REFERENCES dbo.DimManager(ManagerID);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimLocation', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimLocation
         FOREIGN KEY (State, Zip) REFERENCES dbo.DimLocation(State, Zip);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimDate_Hire', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimDate_Hire
         FOREIGN KEY (DateofHire) REFERENCES dbo.DimDate(FullDate);
 GO
 
 IF OBJECT_ID(N'dbo.FK_FactEmploymentCompensation_DimDate_Termination', N'F') IS NULL
-    ALTER TABLE dbo.FactEmploymentCompensation WITH NOCHECK
+    ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK
     ADD CONSTRAINT FK_FactEmploymentCompensation_DimDate_Termination
         FOREIGN KEY (DateofTermination) REFERENCES dbo.DimDate(FullDate);
+GO
+
+/* Revalider aussi les contraintes deja presentes afin qu'elles soient trusted. */
+ALTER TABLE dbo.FactAttendancePerformance WITH CHECK CHECK CONSTRAINT ALL;
+ALTER TABLE dbo.FactEmploymentCompensation WITH CHECK CHECK CONSTRAINT ALL;
 GO
 
 /*

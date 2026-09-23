@@ -1,6 +1,6 @@
 param(
     [string]$InputPath = (Join-Path $PSScriptRoot 'HRDataset.csv'),
-    [string]$OutputPath = (Join-Path $PSScriptRoot 'HRDataset_Clean.csv'),
+    [string]$OutputPath = (Join-Path $PSScriptRoot 'HRDataset_Clean_Validated.csv'),
     [datetime]$ReferenceDate = [datetime]'2026-04-25'
 )
 
